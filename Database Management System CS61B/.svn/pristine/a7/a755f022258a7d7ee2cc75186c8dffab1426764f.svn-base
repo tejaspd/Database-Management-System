@@ -1,0 +1,72 @@
+package db61b;
+import org.junit.Test;
+import static org.junit.Assert.*;
+import java.util.ArrayList;
+import java.util.List;
+public class BasicTests {
+	@Test
+    public void testRow() {
+    	Row r = new Row(new String[] {"so", "excited", "right", "now."});
+    	Row x = new Row(new String[] {"so", "excited", "right", "now."});
+    	assertEquals(4, r.size());
+    	assertEquals(true, r.equals(x));
+	}
+
+	@Test
+	public void testGetRow() {
+		Row r = new Row(new String[] {"so", "excited", "right", "now."});
+		assertEquals("so", r.get(0));
+	}
+
+	@Test
+	public void testGetColumn() {
+		Table t = new Table( new String[] {"this", "is", "a", "new", "table"});
+		assertEquals(5, t.columns());
+		assertEquals("table", t.getTitle(4));
+
+	}
+	@Test
+	public void testTable() {
+		Table t = new Table( new String[] {"SID", "LastName", "FirstName", "SemesterEnter", "YearEnter", "Major"});
+		Row jason = new Row( new String[] {"101", "Knowles", "Jason", "F", "2003", "EECS"});
+		Row valerie = new Row( new String[] {"102", "Chan", "Valerie", "S", "2003", "Math"});
+		Row xavier = new Row(new String[] {"103", "Xavier", "Jonathan", "S", "2004", "LSUnd"}); 
+		t.add(jason);
+		t.add(valerie);
+		t.add(xavier);
+		assertEquals(false, t.add(jason));
+
+	}
+	@Test
+	public void testDatabase() {
+		Table t = new Table( new String[] {"SID", "LastName", "FirstName", "SemesterEnter", "YearEnter", "Major"});
+		Row jason = new Row( new String[] {"101", "Knowles", "Jason", "F", "2003", "EECS"});
+		Row valerie = new Row( new String[] {"102", "Chan", "Valerie", "S", "2003", "Math"});
+		Row xavier = new Row(new String[] {"103", "Xavier", "Jonathan", "S", "2004", "LSUnd"}); 
+		t.add(jason);
+		t.add(valerie);
+		t.add(xavier);
+		Database d = new Database();
+		assertEquals(null, d.get("scsdc"));
+		d.put("students", t);
+		assertEquals(t, d.get("students"));
+
+	}
+
+	@Test public void testReadTable() {
+		Table t = new Table( new String[] {"SID", "LastName", "FirstName", "SemesterEnter", "YearEnter", "Major"});
+		Row jason = new Row( new String[] {"101", "Knowles", "Jason", "F", "2003", "EECS"});
+		Row valerie = new Row( new String[] {"102", "Chan", "Valerie", "S", "2003", "Math"});
+		Row xavier = new Row(new String[] {"103", "Xavier", "Jonathan", "S", "2004", "LSUnd"}); 
+		t.add(jason);
+		t.add(valerie);
+		t.add(xavier);
+
+		t.writeTable("morestudents");
+
+	}
+	
+	public static void main(String[] args) {
+        System.exit(ucb.junit.textui.runClasses(BasicTests.class));
+    }
+}

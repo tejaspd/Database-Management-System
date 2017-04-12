@@ -1,0 +1,2 @@
+load testExampleTable;
+print testExampleTable;

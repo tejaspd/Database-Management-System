@@ -1,0 +1,27 @@
+Every time I do select, it disregards the name of the column and just gives me the first one
+i can do 
+load students;
+select Firstname from students;
+ 101 
+ 102 
+ 103 
+ 104 
+ 105 
+ 106
+
+ it will print out just the SIDS
+ 
+ it doesn't even have to be a valid column name
+ i could just do, any string would be okay, and it would still print out 
+ select five from students;
+
+the SIDS
+
+> select Firstname, Lastname from students;
+Search result:
+ 104 Armstrong 
+ 102 Chan 
+ 103 Xavier 
+ 106 Chan 
+ 101 Knowles 
+ 105 Brown

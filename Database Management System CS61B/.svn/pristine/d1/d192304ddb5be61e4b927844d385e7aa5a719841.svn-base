@@ -1,0 +1,30 @@
+package db61b;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class BasicTest {
+	@Test
+    public void testRow() {
+    	Row r = new Row(new String[] {"so", "excited", "right", "now."});
+    	Row x = new Row(new String[] {"so", "excited", "right", "now."});
+    	assertEquals(4, r.size());
+    	assertEquals(true, r.equals(x));
+	}
+
+	@Test
+	public void testGetRow() {
+		Row r = new Row(new String[] {"so", "excited", "right", "now."});
+		assertEquals("so", r.get(0));
+	}
+
+	@Test
+	public void testGetColumn() {
+		Table t = new Table( new String[] {"this", "is", "a", "new", "table"});
+		assertEquals(5, t.columns());
+		assertEquals("table", t.getTitle(4));
+	}
+	
+	public static void main(String[] args) {
+        System.exit(ucb.junit.textui.runClasses(BasicTest.class));
+    }
+}

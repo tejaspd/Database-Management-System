@@ -1,0 +1,58 @@
+package db61b;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class BasicTests {
+	@Test
+    public void testRow() {
+    	Row r = new Row(new String[] {"so", "excited", "right", "now."});
+    	Row x = new Row(new String[] {"so", "excited", "right", "now."});
+    	assertEquals(4, r.size());
+    	// System.out.println(r);
+    	// System.out.println(x);
+    	assertEquals(true, r.equals(x));
+	}
+
+	@Test
+	public void testGetRow() {
+		Row r = new Row(new String[] {"so", "excited", "right", "now."});
+		assertEquals("so", r.get(0));
+	}
+
+	@Test
+	public void testGetColumn() {
+		Table t = new Table( new String[] {"this", "is", "a", "new", "table"});
+		assertEquals(5, t.columns());
+		assertEquals("table", t.getTitle(4));
+		//assertEquals
+
+	}
+	@Test
+	public void testTable() {
+		Table t = new Table( new String[] {"SID", "LastName", "FirstName", "SemesterEnter", "YearEnter", "Major"});
+		Row jason = new Row( new String[] {"101", "Knowles", "Jason", "F", "2003", "EECS"});
+		Row valerie = new Row( new String[] {"102", "Chan", "Valerie", "S", "2003", "Math"});
+
+		t.add(jason);
+		t.add(valerie);
+		t.print();
+		assertEquals(false, t.add(jason));
+		//t.print();
+
+	}
+	@Test
+	public void testDatabase() {
+		Table t = new Table( new String[] {"SID", "LastName", "FirstName", "SemesterEnter", "YearEnter", "Major"});
+		Row jason = new Row( new String[] {"101", "Knowles", "Jason", "F", "2003", "EECS"});
+		Row valerie = new Row( new String[] {"102", "Chan", "Valerie", "S", "2003", "Math"});
+
+		t.add(jason);
+		t.add(valerie);
+		Database d = new Database();
+		assertEquals(null, d.get("scsdc"));
+	}
+	
+	public static void main(String[] args) {
+        System.exit(ucb.junit.textui.runClasses(BasicTests.class));
+    }
+}
